@@ -37,7 +37,7 @@ gradle run
 ```
 
 You may want to compare the difference with the `otel.instrumentation.kotlinx-coroutines.enabled` flag enabled or 
-disabled. You can toggle this by commenting out or including [this line in the gradle build file](./build.gradle.kts#L38).
+disabled. You can toggle this by commenting out or including [this line in the gradle build file](./build.gradle.kts#L39).
 
 ## Expected Result
 
@@ -54,3 +54,12 @@ When `otel.instrumentation.kotlinx-coroutines.enabled` is set to `true`, what we
 nesting under `Example.runProcess` (the root span):
 
 ![Actual trace spans](./images/actual.png)
+
+## Resolution
+
+Testing with the `opentelemetry-javaagent-1.21.0-20221206.221310-88.jar` snapshot build of the Java agent produces
+correct traces. You can see the result by switching the agent jar on [this line in the gradle build file](./build.gradle.kts#L32-L33)
+
+![Fixed trace spans](images/fixed.png)
+
+Note that the trace is also now consistent whether `otel.instrumentation.kotlinx-coroutines.enabled` is enabled or not.

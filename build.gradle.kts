@@ -30,7 +30,8 @@ tasks.withType<KotlinCompile> {
 application {
     mainClass.set("example.MainKt")
     applicationDefaultJvmArgs = listOf(
-        "-javaagent:./opentelemetry-javaagent.jar",
+//        "-javaagent:./opentelemetry-javaagent.jar",
+        "-javaagent:./opentelemetry-javaagent-1.21.0-20221206.221310-88.jar",
         "-Dotel.service.name=coroutines-example",
         "-Dotel.traces.exporter=jaeger",
         "-Dotel.exporter.jaeger.endpoint=http://localhost:14250",
